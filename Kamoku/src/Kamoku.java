@@ -1,6 +1,6 @@
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import java.util.*;
 
 class Kamoku extends JFrame{
 
@@ -24,14 +24,31 @@ class Kamoku extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                JLabel msg = new JLabel("クリックされました");
-                JOptionPane.showMessageDialog(panel, msg);
+                showSelected();
             }
         });
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setContentPane(panel);
         pack();
         setVisible(true);
+    }
+
+    private void showSelected(){
+        ArrayList<String> options = new ArrayList<String>();
+        if(required.isSelected()) {
+            options.add("必修科目");
+        }
+        if(optional.isSelected()) {
+            options.add("選択科目");
+        }
+        if(noExam.isSelected()) {
+            options.add("試験なし");
+        }
+        if(noReport.isSelected()) {
+            options.add("レポートなし");
+        }
+        JLabel msg = new JLabel(options.toString());
+        JOptionPane.showMessageDialog(panel, msg);
     }
 
     public void setData(Kamoku data) {
