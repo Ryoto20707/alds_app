@@ -118,28 +118,33 @@ class Kamoku extends JFrame{
         int count = 0;
         int size  = array.size();
         while(count < size) {
-            // KamokuDataのArrayListから一つずつ取得
+            // KamokuDataのArrayListから一つずつ取得。あとでcontinueしてもいいように、countはここでインクリメントしておく
             KamokuData kamoku = array.get(count++);
 
-            // 曜日と時間が空でない時に一致しないものは除外
+            // 学期と曜日と時間が空でない時に一致しないものは除外
             if(!semesterBox.getSelectedItem().equals("") && !kamoku.getSemester().equals(semesterBox.getSelectedItem())) continue;
-            if(!dayBox.     getSelectedItem().equals("") && !kamoku.getDay().     equals(dayBox.     getSelectedItem())) continue;
-            if(!classBox.   getSelectedItem().equals("") && !kamoku.get(CLASS).   equals(classBox.   getSelectedItem())) continue;
+            if(!dayBox.     getSelectedItem().equals("") && !kamoku.getDay().     equals(dayBox.getSelectedItem())) continue;
+            if(!classBox.   getSelectedItem().equals("") && !kamoku.get(CLASS).   equals(classBox.getSelectedItem())) continue;
 
             // 高度な検索条件に一致しないものは除外
             if(requiredButton.isSelected() && !kamoku.get(TYPE  ).equals("r")) continue;
             if(optionalButton.isSelected() && !kamoku.get(TYPE  ).equals("o")) continue;
             if(noExam.        isSelected() &&  kamoku.get(EXAM  ).equals("o")) continue;
             if(noReport.      isSelected() &&  kamoku.get(REPORT).equals("o")) continue;
-            // 除外されなければTableModelに追加。toArrayで"mon"->"月"や"r"->"必修"などに修正。
+
+            /*
+             * 除外されなければTableModelに行として追加。toArrayの時に"mon"->"月"や"r"->"必修"などに修正
+             * （kamokuArrayがtoArray()をオーバーライドしてある）。
+             */
             Object[] kamokuArray = kamoku.toArray();
             model.addRow(kamokuArray);
         }
+        // 上で条件に一致した行だけが入ったTableModelを検索結果テーブルにセット
         resultTable.setModel(model);
     }
 
     private void createUIComponents() {
-        // 検索結果のテーブルの初期状態。ヘッダーだけつける。
+        // 検索結果のテーブルの初期状態。中身は空で、ヘッダーだけつける。
         resultTable = new JTable(new String[][]{}, header);
     }
 }
