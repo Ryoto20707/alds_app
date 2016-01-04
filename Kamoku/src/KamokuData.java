@@ -1,15 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class KamokuData extends ArrayList<String> {
-
-    private static final int SUBJECT  = 0;
-    private static final int SEMESTER = 1;
-    private static final int DAY      = 2;
-    private static final int CLASS    = 3;
-    private static final int EXAM     = 4;
-    private static final int REPORT   = 5;
-    private static final int TYPE     = 6;
 
     private static HashMap<String, String> semesterCode;
     private static HashMap<String, String> dayCode;
@@ -36,17 +27,17 @@ public class KamokuData extends ArrayList<String> {
     @Override
     public Object[] toArray() {
         Object[] superArray = super.toArray();
-        superArray[SEMESTER] = semesterCode.get(superArray[SEMESTER]);
-        superArray[DAY]      = dayCode.     get(superArray[DAY]);
-        superArray[TYPE]     = typeCode.    get(superArray[TYPE]);
+        superArray[Kamoku.SEMESTER] = semesterCode.get(superArray[Kamoku.SEMESTER]);
+        superArray[Kamoku.DAY]      = dayCode.     get(superArray[Kamoku.DAY]);
+        superArray[Kamoku.TYPE]     = typeCode.    get(superArray[Kamoku.TYPE]);
         return superArray;
     }
 
     public String getDay(){
-        return dayCode.get(this.get(DAY));
+        return dayCode.get(this.get(Kamoku.DAY));
     }
 
     public String getSemester(){
-        return semesterCode.get(this.get(SEMESTER));
+        return semesterCode.get(this.get(Kamoku.SEMESTER));
     }
 }

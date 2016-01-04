@@ -7,13 +7,13 @@ import java.util.*;
 class Kamoku extends JFrame{
 
     // csvの配列インデックス
-    private static final int SUBJECT  = 0;
-    private static final int SEMESTER = 1;
-    private static final int DAY      = 2;
-    private static final int CLASS    = 3;
-    private static final int EXAM     = 4;
-    private static final int REPORT   = 5;
-    private static final int TYPE     = 6;
+    static final int SUBJECT  = 0;
+    static final int SEMESTER = 1;
+    static final int DAY      = 2;
+    static final int CLASS    = 3;
+    static final int EXAM     = 4;
+    static final int REPORT   = 5;
+    static final int TYPE     = 6;
 
     //テーブルのヘッダ
     private static final String[] header = new String[]{"科目名", "学期", "曜日", "時限", "試験", "レポート", "種別"};
