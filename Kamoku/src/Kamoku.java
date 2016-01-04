@@ -123,8 +123,8 @@ class Kamoku extends JFrame{
 
             // 学期と曜日と時間が空でない時に一致しないものは除外
             if(!semesterBox.getSelectedItem().equals("") && !kamoku.getSemester().equals(semesterBox.getSelectedItem())) continue;
-            if(!dayBox.     getSelectedItem().equals("") && !kamoku.getDay().     equals(dayBox.getSelectedItem())) continue;
-            if(!classBox.   getSelectedItem().equals("") && !kamoku.get(CLASS).   equals(classBox.getSelectedItem())) continue;
+            if(!dayBox.     getSelectedItem().equals("") && !kamoku.getDay().     equals(dayBox.getSelectedItem()     )) continue;
+            if(!classBox.   getSelectedItem().equals("") && !kamoku.get(CLASS).   equals(classBox.getSelectedItem()   )) continue;
 
             // 高度な検索条件に一致しないものは除外
             if(requiredButton.isSelected() && !kamoku.get(TYPE  ).equals("r")) continue;
