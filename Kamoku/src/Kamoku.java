@@ -20,35 +20,35 @@ class Kamoku extends JFrame{
 
     /*
      * JFrameに出てくる要素
-     * Windowは画面のまとまり
-     * Labelは画面上の文字
-     * Tableは下の表
-     * Buttonは検索ボタン
-     * CheckBoxはチェックボックス
-     * ComboBoxはプルダウンボックス
-     * ScrollPaneはスクロール画面。この中にテーブルが入ってる。
-     * RadioButtonはラジオボタン
+     * JWindowは画面のまとまり
+     * JLabelは画面上の文字
+     * JTableは下の表
+     * JButtonは検索ボタン
+     * JCheckBoxはチェックボックス
+     * JComboBoxはプルダウンボックス
+     * JScrollPaneはスクロール画面。この中にテーブルが入ってる。
+     * JRadioButtonはラジオボタン
      *
      * Panel、Labelはコードに直接影響しない
      */
     private JPanel panel;
-    private JPanel searchWindow;
-    private JPanel highLevelSearchWindow;
-    private JPanel resultWindow;
-    private JLabel semesterLabel;
-    private JLabel dayLabel;
-    private JLabel classLabel;
-    private JTable resultTable;
-    private JButton searchButton;
-    private JCheckBox noExam;
-    private JCheckBox noReport;
-    private JComboBox semesterBox;
-    private JComboBox dayBox;
-    private JComboBox classBox ;
-    private JScrollPane resultPane;
-    private JRadioButton requiredButton;
-    private JRadioButton optionalButton;
-    private JRadioButton allTypeButton;
+    private JPanel searchWindow;          // 科目検索
+    private JPanel highLevelSearchWindow; // 高度な検索
+    private JPanel resultWindow;          // 検索結果
+    private JLabel semesterLabel;         // "学期"
+    private JLabel dayLabel;              // "曜日"
+    private JLabel classLabel;            // "限"
+    private JTable resultTable;           // 検索結果のテーブル
+    private JButton searchButton;         // "検索"
+    private JCheckBox noExam;             // "試験なし"
+    private JCheckBox noReport;           // "レポートなし"
+    private JComboBox semesterBox;        // 学期選択メニュー
+    private JComboBox dayBox;             // 曜日選択メニュー
+    private JComboBox classBox;           // 時限選択メニュー
+    private JScrollPane resultPane;       // resultTableを囲うスクロール画面
+    private JRadioButton requiredButton;  // "必修"
+    private JRadioButton optionalButton;  // "選択"
+    private JRadioButton allTypeButton;   // "指定しない"
 
     // Mainでコンストラクタを呼ぶ、コンストラクタ内で画面起動
     public Kamoku() {
