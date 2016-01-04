@@ -76,7 +76,7 @@ class Kamoku extends JFrame{
      * csvのデータを格納したArrayListを返すコード
      * ArrayListに格納されるのはKamokuDataクラスのインスタンスで
      * KamokuDataクラスはStringのArrayListを継承している。
-     * よってコンストラクタの返り値は実質多次元配列である。
+     * よってこの関数の返り値は実質二次元配列である。
      * @return ArrayList
      */
     private ArrayList<KamokuData> readList(){
