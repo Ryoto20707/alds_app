@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="alds_app:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/alds_app_jar</output-path>
+    <root id="archive" name="alds_app.jar">
+      <element id="module-output" name="alds_app" />
+      <element id="library" level="project" name="src" />
+    </root>
+  </artifact>
+</component>
