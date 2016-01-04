@@ -6,32 +6,35 @@ import java.util.*;
 
 class Kamoku extends JFrame{
 
-    private static final int SUBJECT = 0;
-    private static final int DAY     = 1;
-    private static final int CLASS   = 2;
-    private static final int EXAM    = 3;
-    private static final int REPORT  = 4;
-    private static final int TYPE    = 5;
+    // csvの配列インデックス
+    private static final int SUBJECT  = 0;
+    private static final int SEMESTER = 1;
+    private static final int DAY      = 2;
+    private static final int CLASS    = 3;
+    private static final int EXAM     = 4;
+    private static final int REPORT   = 5;
+    private static final int TYPE     = 6;
 
-    private static final String[] header = new String[]{"科目名", "曜日", "時限", "試験", "レポート", "種別"};
+    private static final String[] header = new String[]{"科目名", "学期", "曜日", "時限", "試験", "レポート", "種別"};
 
     private JPanel panel;
     private JPanel searchWindow;
-    private JComboBox dayBox;
-    private JLabel dayLabel;
-    private JComboBox classBox ;
-    private JLabel classLabel;
     private JPanel highLevelSearchWindow;
-    private JButton searchButton;
     private JPanel resultWindow;
-    private JList resultList;
+    private JLabel semesterLabel;
+    private JLabel dayLabel;
+    private JLabel classLabel;
+    private JTable resultTable;
+    private JButton searchButton;
+    private JCheckBox noExam;
+    private JCheckBox noReport;
+    private JComboBox semesterBox;
+    private JComboBox dayBox;
+    private JComboBox classBox ;
+    private JScrollPane resultPane;
     private JRadioButton requiredButton;
     private JRadioButton optionalButton;
     private JRadioButton allTypeButton;
-    private JCheckBox noExam;
-    private JCheckBox noReport;
-    private JScrollPane resultPane;
-    private JTable resultTable;
 
     public Kamoku() {
         ArrayList<KamokuData> array = readList();
@@ -73,14 +76,15 @@ class Kamoku extends JFrame{
     }
 
     private void createResultTable(ArrayList<KamokuData> array){
-        DefaultTableModel model = new DefaultTableModel(new String[0][TYPE], header);
+        DefaultTableModel model = new DefaultTableModel(new String[0][7], header);
 
         int count = 0;
         int size  = array.size();
         while(count < size){
             KamokuData kamoku = array.get(count++);
-            if(!dayBox.  getSelectedItem().equals("") && !kamoku.getDay().  equals(dayBox.  getSelectedItem())) continue;
-            if(!classBox.getSelectedItem().equals("") && !kamoku.get(CLASS).equals(classBox.getSelectedItem())) continue;
+            if(!semesterBox.getSelectedItem().equals("") && !kamoku.getSemester().equals(semesterBox.getSelectedItem())) continue;
+            if(!dayBox.     getSelectedItem().equals("") && !kamoku.getDay().     equals(dayBox.     getSelectedItem())) continue;
+            if(!classBox.   getSelectedItem().equals("") && !kamoku.get(CLASS).   equals(classBox.   getSelectedItem())) continue;
             if(requiredButton.isSelected() && !kamoku.get(TYPE  ).equals("r")) continue;
             if(optionalButton.isSelected() && !kamoku.get(TYPE  ).equals("o")) continue;
             if(noExam.        isSelected() &&  kamoku.get(EXAM  ).equals("o")) continue;
