@@ -26,6 +26,11 @@ public class KamokuData extends ArrayList<String> {
         typeCode.put("o", "選択");
     }
 
+    /**
+     * 配列に戻す時に、学期・曜日・必修選択をcsvの英語表記から漢字表記に戻す。
+     * 出力された配列は検索結果のテーブルにそのまま出る。
+     * @return Object[]
+     */
     @Override
     public Object[] toArray() {
         Object[] superArray = super.toArray();

@@ -18,7 +18,19 @@ class Kamoku extends JFrame{
     //テーブルのヘッダ
     private static final String[] header = new String[]{"科目名", "学期", "曜日", "時限", "試験", "レポート", "種別"};
 
-    // JFrameに出てくる要素　
+    /*
+     * JFrameに出てくる要素
+     * Windowは画面のまとまり
+     * Labelは画面上の文字
+     * Tableは下の表
+     * Buttonは検索ボタン
+     * CheckBoxはチェックボックス
+     * ComboBoxはプルダウンボックス
+     * ScrollPaneはスクロール画面。この中にテーブルが入ってる。
+     * RadioButtonはラジオボタン
+     *
+     * Panel、Labelはコードに直接影響しない
+     */
     private JPanel panel;
     private JPanel searchWindow;
     private JPanel highLevelSearchWindow;
