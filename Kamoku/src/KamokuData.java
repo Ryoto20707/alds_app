@@ -2,12 +2,14 @@ import java.util.*;
 
 public class KamokuData extends ArrayList<String> {
 
+    // 学期、曜日、必修選択を英語のキーと日本語の値で持つハッシュマップ
     private static HashMap<String, String> semesterCode;
     private static HashMap<String, String> dayCode;
     private static HashMap<String, String> typeCode;
 
     public KamokuData(){
         super();
+        // 各ハッシュマップを設定
         semesterCode = new HashMap<String, String>();
         semesterCode.put("s", "春");
         semesterCode.put("f", "秋");
@@ -33,10 +35,18 @@ public class KamokuData extends ArrayList<String> {
         return superArray;
     }
 
+    /**
+     * 曜日を漢字で返す
+     * @return String
+     */
     public String getDay(){
         return dayCode.get(this.get(Kamoku.DAY));
     }
 
+    /**
+     * 学期を漢字で返す
+     * @return String
+     */
     public String getSemester(){
         return semesterCode.get(this.get(Kamoku.SEMESTER));
     }
