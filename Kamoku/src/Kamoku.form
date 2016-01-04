@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Kamoku">
-  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="528" height="400"/>
     </constraints>
     <properties>
       <background color="-1"/>
+      <foreground color="-16777216"/>
     </properties>
     <border type="none"/>
     <children>
@@ -34,6 +35,7 @@
                 <item value="木"/>
                 <item value="金"/>
                 <item value="土"/>
+                <item value="日"/>
               </model>
             </properties>
           </component>
@@ -77,7 +79,7 @@
               <text value="限"/>
             </properties>
           </component>
-          <grid id="1a7a6" binding="highLevelSearchWindow" layout-manager="GridLayoutManager" row-count="2" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="1a7a6" binding="highLevelSearchWindow" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -88,14 +90,9 @@
             </properties>
             <border type="none" title="高度な検索"/>
             <children>
-              <hspacer id="74c3a">
+              <component id="24027" class="javax.swing.JRadioButton" binding="requiredButton">
                 <constraints>
-                  <grid row="0" column="3" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <component id="1964" class="javax.swing.JCheckBox" binding="required">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1"/>
@@ -103,19 +100,9 @@
                   <text value="必修"/>
                 </properties>
               </component>
-              <component id="46866" class="javax.swing.JCheckBox" binding="optional">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-1"/>
-                  <foreground color="-16777216"/>
-                  <text value="選択"/>
-                </properties>
-              </component>
               <component id="e982e" class="javax.swing.JCheckBox" binding="noExam">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1"/>
@@ -123,14 +110,40 @@
                   <text value="試験なし"/>
                 </properties>
               </component>
+              <hspacer id="2dff4">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="3fa38" class="javax.swing.JRadioButton" binding="optionalButton">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-16777216"/>
+                  <text value="選択"/>
+                </properties>
+              </component>
               <component id="48f54" class="javax.swing.JCheckBox" binding="noReport">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-16777216"/>
+                  <text value="レポートなし"/>
+                </properties>
+              </component>
+              <component id="5e552" class="javax.swing.JRadioButton" binding="allTypeButton">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1"/>
                   <foreground color="-16777216"/>
-                  <text value="レポートなし"/>
+                  <selected value="true"/>
+                  <text value="指定しない"/>
                 </properties>
               </component>
             </children>
@@ -159,18 +172,39 @@
         </properties>
         <border type="none" title="検索結果"/>
         <children>
-          <component id="5a6aa" class="javax.swing.JList" binding="resultList">
+          <scrollpane id="70b8a" binding="resultPane">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties>
-              <model/>
-            </properties>
-          </component>
+            <properties/>
+            <border type="none" title=""/>
+            <children>
+              <component id="d2ac0" class="javax.swing.JTable" binding="resultTable" custom-create="true">
+                <constraints/>
+                <properties>
+                  <autoCreateRowSorter value="false"/>
+                  <background color="-1"/>
+                  <foreground color="-16777216"/>
+                  <showHorizontalLines value="true"/>
+                  <showVerticalLines value="true"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
+      <vspacer id="981b2">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="type">
+      <member id="5e552"/>
+      <member id="3fa38"/>
+      <member id="24027"/>
+    </group>
+  </buttonGroups>
 </form>
