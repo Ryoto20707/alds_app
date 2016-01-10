@@ -8,15 +8,19 @@ class Kamoku extends JFrame{
 
     // csvの配列インデックス
     static final int SUBJECT  = 0;
-    static final int SEMESTER = 1;
-    static final int DAY      = 2;
-    static final int CLASS    = 3;
-    static final int EXAM     = 4;
-    static final int REPORT   = 5;
-    static final int TYPE     = 6;
+    static final int GRADE    = 1;
+    static final int SEMESTER = 2;
+    static final int DAY      = 3;
+    static final int CLASS    = 4;
+    static final int EXAM     = 5;
+    static final int REPORT   = 6;
+    static final int TYPE     = 7;
+
+    // csvの列数
+    static final int SIZE     = 8;
 
     //テーブルのヘッダ
-    private static final String[] header = new String[]{"科目名", "学期", "曜日", "時限", "試験", "レポート", "種別"};
+    private static final String[] header = new String[]{"科目名", "学年", "学期", "曜日", "時限", "試験", "レポート", "種別"};
 
     /*
      * JFrameに出てくる要素
@@ -35,6 +39,7 @@ class Kamoku extends JFrame{
     private JPanel searchWindow;          // 科目検索
     private JPanel highLevelSearchWindow; // 高度な検索
     private JPanel resultWindow;          // 検索結果
+    private JLabel gradeLabel;            // "年"
     private JLabel semesterLabel;         // "学期"
     private JLabel dayLabel;              // "曜日"
     private JLabel classLabel;            // "限"
@@ -42,6 +47,7 @@ class Kamoku extends JFrame{
     private JButton searchButton;         // "検索"
     private JCheckBox noExam;             // "試験なし"
     private JCheckBox noReport;           // "レポートなし"
+    private JComboBox gradeBox;           // 学年選択メニュー
     private JComboBox semesterBox;        // 学期選択メニュー
     private JComboBox dayBox;             // 曜日選択メニュー
     private JComboBox classBox;           // 時限選択メニュー
@@ -112,8 +118,8 @@ class Kamoku extends JFrame{
      * @param array 科目情報のテーブル
      */
     private void createResultTable(ArrayList<KamokuData> array) {
-        // JTableの中身をTableModelで決定、初期状態はheaderのみで中身は0行7列。
-        DefaultTableModel model = new DefaultTableModel(new String[0][7], header);
+        // JTableの中身をTableModelで決定、初期状態はheaderのみで中身は0行8列。
+        DefaultTableModel model = new DefaultTableModel(new String[0][SIZE], header);
 
         int count = 0;
         int size  = array.size();
@@ -121,7 +127,8 @@ class Kamoku extends JFrame{
             // KamokuDataのArrayListから一つずつ取得。あとでcontinueしてもいいように、countはここでインクリメントしておく
             KamokuData kamoku = array.get(count++);
 
-            // 学期と曜日と時間が空でない時に一致しないものは除外
+            // 学年、学期、曜日、時限がそれぞれ空でない時に一致しないものは除外
+            if(!gradeBox.   getSelectedItem().equals("") && !kamoku.get(GRADE).   equals(gradeBox.   getSelectedItem())) continue;
             if(!semesterBox.getSelectedItem().equals("") && !kamoku.getSemester().equals(semesterBox.getSelectedItem())) continue;
             if(!dayBox.     getSelectedItem().equals("") && !kamoku.getDay().     equals(dayBox.     getSelectedItem())) continue;
             if(!classBox.   getSelectedItem().equals("") && !kamoku.get(CLASS).   equals(classBox.   getSelectedItem())) continue;
