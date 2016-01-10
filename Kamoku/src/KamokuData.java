@@ -13,6 +13,7 @@ public class KamokuData extends ArrayList<String> {
         semesterCode = new HashMap<String, String>();
         semesterCode.put("s", "春");
         semesterCode.put("f", "秋");
+        semesterCode.put("?", "?");
         dayCode = new HashMap<String, String>();
         dayCode.put("mon", "月");
         dayCode.put("tue", "火");
@@ -21,9 +22,11 @@ public class KamokuData extends ArrayList<String> {
         dayCode.put("fri", "金");
         dayCode.put("sat", "土");
         dayCode.put("sun", "日");
+        dayCode.put("?"  , "?");
         typeCode = new HashMap<String, String>();
         typeCode.put("r", "必修");
         typeCode.put("o", "選択");
+        typeCode.put("?", "?");
     }
 
     /**
