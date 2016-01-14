@@ -127,7 +127,10 @@ class Kamoku extends JFrame{
             // KamokuDataのArrayListから一つずつ取得。あとでcontinueしてもいいように、countはここでインクリメントしておく
             KamokuData kamoku = array.get(count++);
 
-            // 学年、学期、曜日、時限がそれぞれ空でない時に一致しないものは除外
+            /*
+             * 学年、学期、曜日、時限がそれぞれ空でない時に一致しないものは除外
+             * kamoku.get()はArrayListの関数、getSemester()とgetDay()はKamokuData.javaで定義してる
+             */
             if(!gradeBox.   getSelectedItem().equals("") && !kamoku.get(GRADE).   equals(gradeBox.   getSelectedItem())) continue;
             if(!semesterBox.getSelectedItem().equals("") && !kamoku.getSemester().equals(semesterBox.getSelectedItem())) continue;
             if(!dayBox.     getSelectedItem().equals("") && !kamoku.getDay().     equals(dayBox.     getSelectedItem())) continue;

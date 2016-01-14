@@ -8,8 +8,9 @@ public class KamokuData extends ArrayList<String> {
     private static HashMap<String, String> typeCode;
 
     public KamokuData(){
+        // スーパークラス(ArrayList<String>)のコンストラクタを呼ぶことで普通のArrayListを作成する。
         super();
-        // 各ハッシュマップを設定
+        // 各変換用ハッシュマップを設定
         semesterCode = new HashMap<String, String>();
         semesterCode.put("s", "春");
         semesterCode.put("f", "秋");
@@ -36,11 +37,19 @@ public class KamokuData extends ArrayList<String> {
      */
     @Override
     public Object[] toArray() {
-        Object[] superArray = super.toArray();
-        superArray[Kamoku.SEMESTER] = semesterCode.get(superArray[Kamoku.SEMESTER]);
-        superArray[Kamoku.DAY]      = dayCode.     get(superArray[Kamoku.DAY]);
-        superArray[Kamoku.TYPE]     = typeCode.    get(superArray[Kamoku.TYPE]);
-        return superArray;
+        /*
+         * ArrayListクラスはもともと配列に変換するtoArray()メソッドを持ってる。
+         * まずはそれを素直にarrayに代入する。
+         */
+        Object[] array = super.toArray();
+        /*
+         * ここから学期、曜日、種別を日本語変換する。
+         * SEMESTER, DAY, TYPEはKamoku.javaの冒頭参照
+         */
+        array[Kamoku.SEMESTER] = semesterCode.get(array[Kamoku.SEMESTER]);
+        array[Kamoku.DAY]      = dayCode.     get(array[Kamoku.DAY]);
+        array[Kamoku.TYPE]     = typeCode.    get(array[Kamoku.TYPE]);
+        return array;
     }
 
     /**
@@ -48,6 +57,10 @@ public class KamokuData extends ArrayList<String> {
      * @return String
      */
     public String getDay(){
+        /*
+         * this.get(Kamoku.DAY)でKamokuDataインスタンス自身の曜日情報("mon"~"sun")を返す。
+         * 従ってこの関数はdayCode.get("mon") = "月"などを返す
+         */
         return dayCode.get(this.get(Kamoku.DAY));
     }
 
@@ -56,6 +69,7 @@ public class KamokuData extends ArrayList<String> {
      * @return String
      */
     public String getSemester(){
+        // 上記getDay()と似た動作で"春", "秋", "?"のいずれかを返す
         return semesterCode.get(this.get(Kamoku.SEMESTER));
     }
 }
